@@ -2,6 +2,15 @@
 
 {% block content %}
 <a href='/'>Back to Home</a>
+{% include 'partials/comment_form.html' %}
+<hr>
+
+    <!-- Show Comments -->
+    {% for comment in comments %}
+        {% include 'partials/comment.html' %}
+    {% endfor %}
+
+    
 <div class='row'>
     <div class='col-sm-6 col-sm-offset-3'>
         <h1>{{ playlist.title }}</h1>
@@ -21,7 +30,7 @@
 
     <!-- Comment form -->
     {% include 'partials/comment_form.html' %}
-    
+
     </div>
 </div>
 {% endblock %}
