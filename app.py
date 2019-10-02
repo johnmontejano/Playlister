@@ -19,5 +19,10 @@ def playlists_new():
 @app.route('/playlists', methods=['POST'])
 def playlists_submit():
     """Submit a new playlist."""
-    print(request.form.to_dict())
+    playlist = {
+        'title': request.form.get('title'),
+        'description': request.form.get('description'),
+        'videos': request.form.get('videos').split()
+    }
+    playlists.insert_one(playlist)
     return redirect(url_for('playlists_index'))
